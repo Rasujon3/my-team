@@ -24,28 +24,30 @@ const Meals = () => {
   };
 
   return (
-    <>
-      <input
-        className="inputText"
-        type="text"
-        placeholder="Search player name..."
-        onChange={(e) => setInputText(e.target.value)}
-      />
-      <div className="shop-container">
-        <div className="products-container">
-          {meals.map((meal) => (
-            <Meal
-              key={meal.idMeal}
-              product={meal}
-              handleAddToCart={handleAddToCart}
-            />
-          ))}
+    meals && (
+      <>
+        <input
+          className="inputText"
+          type="text"
+          placeholder="Search player name..."
+          onChange={(e) => setInputText(e.target.value)}
+        />
+        <div className="shop-container">
+          <div className="products-container">
+            {meals.map((meal) => (
+              <Meal
+                key={meal.idPlayer}
+                product={meal}
+                handleAddToCart={handleAddToCart}
+              />
+            ))}
+          </div>
+          <div className="cart-container">
+            <Cart cart={cart} />
+          </div>
         </div>
-        <div className="cart-container">
-          <Cart cart={cart} />
-        </div>
-      </div>
-    </>
+      </>
+    )
   );
 };
 
