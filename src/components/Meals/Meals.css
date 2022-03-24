@@ -11,6 +11,14 @@
 .cart-container {
   background-color: rgba(255, 153, 0, 0.3);
 }
+.inputText {
+  text-align: center;
+  width: 50%;
+  margin-left: 200px;
+  margin-top: 50px;
+  padding: 10px;
+  border: 3px solid black;
+}
 
 @media screen and (max-width: 1100px) {
   .products-container {

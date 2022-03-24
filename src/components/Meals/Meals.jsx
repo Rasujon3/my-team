@@ -6,13 +6,14 @@ import "./Meals.css";
 const Meals = () => {
   const [meals, setMeals] = useState([]);
   const [cart, setCart] = useState([]);
+  const [inputText, setInputText] = useState("");
 
   useEffect(() => {
-    const url = `https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=a`;
+    const url = `https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=${inputText}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setMeals(data.player));
-  }, []);
+  }, [inputText]);
 
   const handleAddToCart = (props) => {
     let newCart = [];
@@ -23,20 +24,28 @@ const Meals = () => {
   };
 
   return (
-    <div className="shop-container">
-      <div className="products-container">
-        {meals.map((meal) => (
-          <Meal
-            key={meal.idMeal}
-            product={meal}
-            handleAddToCart={handleAddToCart}
-          />
-        ))}
+    <>
+      <input
+        className="inputText"
+        type="text"
+        placeholder="Search player name..."
+        onChange={(e) => setInputText(e.target.value)}
+      />
+      <div className="shop-container">
+        <div className="products-container">
+          {meals.map((meal) => (
+            <Meal
+              key={meal.idMeal}
+              product={meal}
+              handleAddToCart={handleAddToCart}
+            />
+          ))}
+        </div>
+        <div className="cart-container">
+          <Cart cart={cart} />
+        </div>
       </div>
-      <div className="cart-container">
-        <Cart cart={cart} />
-      </div>
-    </div>
+    </>
   );
 };
 
