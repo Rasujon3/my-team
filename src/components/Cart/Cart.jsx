@@ -5,7 +5,7 @@ const Cart = ({ cart }) => {
   //   console.log(cart);
   return (
     <div className="cart">
-      <h1>Added Meals</h1>
+      <h1>Add to my team</h1>
       {cart.map((meal, index) => (
         <ul key={Math.random(index) * 100000}>
           <li>{meal}</li>

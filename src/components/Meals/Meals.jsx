@@ -8,10 +8,10 @@ const Meals = () => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    const url = `https://www.themealdb.com/api/json/v1/1/search.php?f=a`;
+    const url = `https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=a`;
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setMeals(data.meals));
+      .then((data) => setMeals(data.player));
   }, []);
 
   const handleAddToCart = (props) => {

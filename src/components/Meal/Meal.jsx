@@ -4,23 +4,30 @@ import React from "react";
 import "./Meal.css";
 
 const Meal = ({ product, handleAddToCart }) => {
-  const { strMeal, strMealThumb, strCategory, strArea, strTags } = product;
+  const { strPlayer, strThumb, strNationality, dateBorn, strTeam } = product;
 
   return (
     <div className="product">
-      <img src={strMealThumb} alt={strMeal} />
+      <img
+        src={
+          strThumb
+            ? strThumb
+            : "https://ruhul-amin-sujon-portfolio.netlify.app/static/media/ruhul_amin_sujon.db7d6807.png"
+        }
+        alt={strPlayer}
+      />
       <div className="product-info">
-        <p className="product-name">Name: {strMeal}</p>
-        <p>Category: {strCategory}</p>
+        <p className="product-name">Name: {strPlayer}</p>
+        <p>Country: {strNationality}</p>
         <p>
-          <small>Area: {strArea}</small>
+          <small>Date of Birth: {dateBorn}</small>
         </p>
         <p>
-          <small>strTags: {strTags ? strTags : "Nothing found"}</small>
+          <small>Club: {strTeam ? strTeam : "Nothing found"}</small>
         </p>
       </div>
-      <button onClick={() => handleAddToCart(strMeal)} className="btn-cart">
-        <p className="btn-text">Add to Cart</p>
+      <button onClick={() => handleAddToCart(strPlayer)} className="btn-cart">
+        <p className="btn-text">Add to My Team</p>
         <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
       </button>
     </div>
